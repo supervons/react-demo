@@ -10,19 +10,38 @@ class HomePage extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            text: '你好'
+            text: '你好',
+            time: new Date()
         }
+        this.changeText = this.changeText.bind(this)
+    }
+
+    componentDidMount() {
+        this.autoTikTok()
+    }
+
+    autoTikTok(){
+        setInterval(()=>{
+            this.setState({
+                time: new Date()
+            })
+        }, 1000)
     }
 
     onResize(){
         return <h1>{this.state.text}</h1>
     }
 
+    changeText() {
+        this.setState({text: '改变为点击字符'})
+    }
+
     render() {
         return (
             <div style={{backgroundColor: 'yellow', height: '300px', width: '300px'}}>
                 {this.onResize()}
-                <button onClick={()=>this.setState({text: '改变为点击字符'})}>点击</button>
+                {this.state.time.toLocaleTimeString()}
+                <button onClick={this.changeText}>点击</button>
             </div>
         );
     }
