@@ -51,6 +51,8 @@ class HomePage extends React.Component {
                 {this.onResize()}
                 {this.state.time.toLocaleTimeString()}
                 {this.conditionRender()}
+                {/*阻止渲染*/}
+                <WarningBanner warn={false}/>
 
                 <div style={{display: 'flex', flexDirection: 'column'}}>
                     <button onClick={this.changeText}>点击</button>
@@ -69,5 +71,18 @@ function UserGreeting(props) {
 function GuestGreeting(props) {
     return <h1>Please sign up.</h1>;
 }
+
+function WarningBanner(props) {
+    if (!props.warn) {
+        return null;
+    }
+
+    return (
+        <div className="warning">
+            Warning!
+        </div>
+    );
+}
+
 
 export default HomePage;
