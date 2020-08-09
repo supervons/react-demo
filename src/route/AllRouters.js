@@ -1,7 +1,12 @@
-
-import Login from '../view/login/Login'
-import Test from '../view/login/cps/test'
-import HomePage from '../view/index/HomePage'
+/**
+ * @desc 使用lazy进行路由懒加载
+ * @author supervons
+ * @date 2020/08/09
+ */
+import {lazy}  from 'react';
+const Login = lazy(() => import('../view/login/Login'));
+const Test = lazy(() => import('../view/login/cps/test'));
+const HomePage = lazy(() => import('../view/index/HomePage'));
 
 const routes = [
     {
